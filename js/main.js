@@ -125,7 +125,6 @@
         selectedDay = new Date(year, month, o.innerHTML);
         this.drawHeader(o.innerHTML);
         this.setCookie('selected_day', 1);
-        
     };
     
     Calendar.prototype.preMonth = function() {

@@ -8255,15 +8255,18 @@ h1, h2, h3, h4, h5,
     right: 20px; }
 
 .head-day {
-  font-size: 9em;
-  line-height: 1;
+  /* font-size: 9em;*/
+  font-size: 0;
+  /* line-height: 1 */
+  line-height: 0;
   color: #fff; }
 
 .head-month {
-  font-size: 2em;
+  /* font-size: 2em; */
+  font-size: 0;
   line-height: 1;
   color: #fff;
-  font-size: 16px;
+  /* font-size: 16px; */
   text-transform: uppercase;
   font-weight: 300; }
 
