@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	updateShardInfo();
 });	
 
+window.onload = function() {
+	document.title = "【光遇国服碎片时间查询】" + updateShardInfo();
+};
+
 function updateShardInfo(){
 	
 	var rule1_mapping = {
