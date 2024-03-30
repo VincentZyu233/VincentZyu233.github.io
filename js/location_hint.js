@@ -80,9 +80,19 @@ function updateShardInfo(){
 	var dayOfWeek = now.getDay(); // 获取星期几
 	var dateString = month.toString() + '月' + date.toString() + '日'; // x月x日 星期x 格式
 	
-	if ( dayOfWeek===1 || dayOfWeek===4 ){
-		locationHint.textContent = "今天没有碎片事件。" ;
-		return;
+	var isNoShardDay = false;
+	if ( dayOfWeek===1 || dayOfWeek===4 ) isNoShardDay = true; //星期一 星期四 肯定没有
+	if ( 1<=date && date<=15 ) //前半月
+		if ( dayOfWeek===3 || dayOfWeek===5 ) isNoShardDay = true; //星期三 星期五 肯定没有
+	if ( 16<=date ) //后半月
+		if ( dayOfWeek===2 || dayOfWeek===6 ) isNoShardDay = true; //星期二 星期六 肯定没有
+	
+	var ShardInfoString;
+	
+	if ( isNoShardDay ){
+		ShardInfoString = "今天没有碎片事件。"
+		locationHint.textContent = ShardInfoString  ;
+		return ShardInfoString ;
 	}
 	
 	// console.log(shardInfo_List);
