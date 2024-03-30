@@ -82,7 +82,7 @@ function updateProgress() {
 	var totalMinutes = 24 * 60; // 一天总分钟数
 
 	getCurrentTime();
-	debug_simulateUpdateTime("16:16", 5, 20);
+	// debug_simulateUpdateTime("16:16", 5, 20);
 	getTodayTimeSegment();
 	// console.log( DayOfWeek );
 
