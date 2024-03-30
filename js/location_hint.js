@@ -92,8 +92,12 @@ function updateShardInfo(){
 	console.log( candleType_mapping );
 	console.log( candleType );
 	console.log( candleType_mapping["ac"] );
-	locationHint.textContent = "今天（" + dateString + "）的碎片降临在" + infoObj.locationName 
+	
+	ShardInfoString = "今天（" + dateString + "）的碎片降临在" + infoObj.locationName 
 								+ "，提供" + infoObj.candleAmount + candleType_mapping[candleType].chineseHint + "。";
+	
+	locationHint.textContent = ShardInfoString;				
+	return ShardInfoString;
 }
 
 
