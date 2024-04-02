@@ -72,12 +72,13 @@ function updateShardInfo(){
 		shardInfo_Sat,
 	];
 	
-	locationHint = document.getElementById("location-hint");
+	locationHint = document.getElementById("main-info");
 	
 	var now = new Date();
 	var month = (now.getMonth() + 1); // 获取月份，并在需要时补零
 	var date = now.getDate(); // 获取日期，并在需要时补零
 	var dayOfWeek = now.getDay(); // 获取星期几
+	dayOfWeek = 6;
 	var dateString = month.toString() + '月' + date.toString() + '日'; // x月x日 星期x 格式
 	
 	var isNoShardDay = false;
@@ -109,8 +110,16 @@ function updateShardInfo(){
 	
 	ShardInfoString = "今天（" + dateString + "）的碎片降临在" + infoObj.locationName 
 								+ "，提供" + infoObj.candleAmount + candleType_mapping[candleType].chineseHint + "。";
+	locationHint.textContent = ShardInfoString;	
 	
-	locationHint.textContent = ShardInfoString;				
+	// 在这里获取已经存在的图片组件的引用
+	var candleTypeImage = document.getElementById("candle-type");
+	candleTypeImage.src = "./images/" + candleType + ".png";
+	
+	// 在这里修改candle-amount的文字内容，内容是infoObj.candleAmount
+	var candleAmountElement = document.getElementById("candle-amount");
+	candleAmountElement.textContent = "    x" + infoObj.candleAmount;
+	
 	return ShardInfoString;
 }
 
