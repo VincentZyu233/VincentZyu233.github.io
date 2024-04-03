@@ -67,7 +67,7 @@ function getShardInfo( now ){
 		{ locationName:"圣岛", candleAmount:3.5 },
 		{ locationName:"秘密花园", candleAmount:3.5 },
 		{ locationName:"雪隐峰", candleAmount:3.5 },
-		{ locationName:"失落方舟", candleAmount:3.5 },
+		{ locationName:"遗忘方舟", candleAmount:3.5 },
 		{ locationName:"水母港湾", candleAmount:3.5 },
 	];
 	
