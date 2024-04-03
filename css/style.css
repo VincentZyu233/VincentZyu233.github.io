@@ -8193,18 +8193,25 @@ h1, h2, h3, h4, h5,
   box-shadow: 0px 19px 27px -20px rgba(0, 0, 0, 0.16); }
 
 .wrap-header {
-  position: relative;
-  width: 35%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* bottom: (100-61.8)%;*/
+  bottom: 61.8%;
+  /* width: 35%;*/
+  /* margin-bottom: 10vh; */
   z-index: 0; }
   .wrap-header:after {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 5%;
+    left: 5%;
+    right: 5%;
+    bottom: 5%;
+	border-radius: 5vw;
     content: '';
-    background: #000;
-    opacity: .5;
+    background: #778899;
+    opacity: .4;
     z-index: -1; }
   @media (max-width: 767.98px) {
     .wrap-header {
@@ -8255,23 +8262,26 @@ h1, h2, h3, h4, h5,
     right: 20px; }
 
 .head-day {
-  /* font-size: 9em;*/
-  font-size: 0;
-  /* line-height: 1 */
-  line-height: 0;
+  font-size: 2em;
+  /* font-size: 0; */
+  /* line-height: 1; */
+  /* line-height: 0; */
   color: #fff; }
 
 .head-month {
-  /* font-size: 2em; */
-  font-size: 0;
-  line-height: 1;
+	/* position: absolute; */
+	/* top:50%; */
+  font-size: 5em;
+  font-family: 'San Francisco', sans-serif;
+  /* font-size: 0; */
+  /* line-height: 1; */
   color: #fff;
   /* font-size: 16px; */
   text-transform: uppercase;
   font-weight: 300; }
 
 .calendar-wrap {
-  background: rgba(0, 0, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   opacity: 100%;
@@ -8289,6 +8299,11 @@ h1, h2, h3, h4, h5,
 #calendar tr {
   height: 3em; }
 
+#calendar thead tr {
+  height: 10%; /* 设置第一行的高度为 40 像素 */
+}
+
+
 thead tr {
   color: #000;
   font-weight: 700; }
@@ -8300,7 +8315,7 @@ tbody td {
 	margin: 1%;
   border: 1px solid white;
   width: 14%;
-  height: 10%;
+  height: 14%;
   border-radius: 10%;
   cursor: pointer;
   -webkit-transition: all 0.2s ease-in;
@@ -8362,7 +8377,7 @@ tbody td:active {
   }
 
 #disabled:hover {
-  background: #fff;
+  background: rgba(255,255,255,0);
   color: #c9c9c9; }
   #disabled:hover:after {
     background: transparent; }

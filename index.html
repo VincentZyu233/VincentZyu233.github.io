@@ -25,9 +25,6 @@
 		  src: url('fonts/PingFang/PingFang SC Semibold.ttf') format('truetype');
 		}
 		
-		.timer-wrap{
-			position: relative;
-		}
 		
 		#shardInfo_container{
 			position: absolute;
@@ -63,20 +60,31 @@
 		
 		.location-hint {
 			font-family: 'PingFang-Semibold', sans-serif;
-			font-weight: 400;
+			/* -webkit-text-stroke: 0.2px #ffffff ; */
+			/* -webkit-text-stroke-color: 0.2px #FFFFFF; */
+			/* font-weight: 400; */
+			/* font-weight: 10%; */
 		}
 		
 		.calendar-cell {
-		  margin: 10px !important;
+			margin: 10px !important;
 		}
 		
-		.wrap-header{
+/* 		.wrap-header{
 			flex-direction: column;
 		}
 		//header永远在上方
 		.d-md-flex {
-		  display: flex !important;
+			display: flex !important;
+		} */
+		
+		.weekday-cell {
+			height: 2vh;
+			background-color: rgba(39,134,229,0.8);
+			backdrop-filter: blur(8px);
+			border-radius: 10px;
 		}
+	
 		
 	  </style>
 
@@ -95,16 +103,16 @@
 	<section class="ftco-section">
 		
 		<div class="container" style="margin-top: 2vh; margin-bottom: 0px;">
-		  <div class="jumbotron timer-wrap" style="margin-top: 0px; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 5vw;">
+		  <div class="jumbotron timer-wrap" style="margin-top: 0px; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 5vw; position: relative;">
 		    
 			<!-- 日期时间 x月x日 hhmmss -->
-		    <div class="page-timer" align="center" style="margin-top: -5vh;">
+		    <div class="page-timer" align="center" style="margin-top: -6vh; margin-bottom: 6vh;">
 		      <h2 class="date-timer">Date and DayOfWeek</h2>
-		      <h1 class="hhmmss-timer" style="height: 10vh; font-size: 10vh; margin-bottom: 5vh;">hh:mm:ss</h1>
+		      <h1 class="hhmmss-timer" style="height: 10vh; font-size: 10vh; margin-bottom: 10vh;">hh:mm:ss</h1>
 		    </div>
 		    
 			<!-- 碎片时间进度条 -->
-		    <div id="progress-container" style="display: flex; justify-content: center; position: relative; border-radius: 4vh; margin-top: 10vh;">
+		    <div id="progress-container" style="display: flex; justify-content: center; position: relative; border-radius: 4vh; margin-top: 12vh;">
 <!-- 				<div id="currentTimeLine" style="background-color: #708090; width: 1px; height: 200%; position: absolute; bottom: 0; z-index: 9999;">
 				</div> -->
 				<div class="progress" style="width: 80vw; height: 80px; overflow: visible; position: relative; border-radius: 4vh;" aria-valuemin="0" aria-valuemax="100">
@@ -113,7 +121,7 @@
 			
 			<!-- 碎片地点烛火数目 -->
 			<div id="shardInfo_container" style="margin-top: 1vh; display: flex; align-items: center; justify-content: center; height: 5vh;">
-			    <p class="location-hint" id="main-info" style="margin: 0;">shardLocationHint</p>
+			    <p class="location-hint" id="main-info" style="margin: 0; font-size: 2.5vh;">shardLocationHint</p>
 				<image id="candle-type" style="height: 5vh; width: auto; max-width: 10vh;"></image>
 			    <p class="location-hint" id="candle-amount" style="margin-right: 10px;"></p>
 			</div>
@@ -133,14 +141,15 @@
 					<h2 class="heading-section">Calendar #07</h2>
 				</div>
 			</div> -->
-			<div class="row">
+			<div class="row" style="margin-bottom: 5vh;">
 				<div class="col-md-12">
 					<div class="elegant-calencar" style="width: 100%;">
 					<!-- <div class="elegant-calencar d-md-flex"> -->
 						
 						<!-- <div class="wrap-header d-flex align-items-center img" style="background-image: url(images/bg.jpg);"> -->
-						<div class="wrap-header" style="background-image: url(images/bg.jpg); width: 100%; height: 0; visibility: hidden;">
-							<div id="header" class="p-0">
+						<!-- <div class="wrap-header" style="background-image: url(images/bg.jpg); width: 100%; height: 0; visibility: hidden;"> -->
+						<!-- <div class="wrap-header" style="background-image: url(images/bg.jpg); width: 100%;"> -->
+						<!-- 	<div id="header" class="p-0">
 								<div class="head-info">
 									<div class="head-month">
 									</div>
@@ -148,10 +157,16 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						
 						<div class="calendar-wrap" style="width: 100%; border-radius: 5%;">
-							<div class="w-100 button-wrap">
+							
+							<div class="wrap-header" style="background-image: url(images/bg.jpg); width: 100%; border-radius: 2vw;">
+								<div class="head-month" style="line-height: 1; top: 15%; left: 10%; position: absolute;"></div>
+								<p class="head-day" style="font-family: 'PingFang-Semibold', sans-serif; font-size: 2vh; color: whitesmoke; position: absolute; top:20%; right: 10%; text-align: left;"></p>
+							</div>
+								
+							<div class="w-100 button-wrap" style="margin: 1vh; margin-top: 30vh; margin-bottom: 3vh;">
 								<div class="pre-button d-flex align-items-center justify-content-center">
 									<!-- <span> <- </span><i class="fa fa-chevron-left"></i> -->
 									<img src="images/arrow-left.png" style="max-width: 100%; max-height: 100%; display: block; margin: auto;  filter: invert(100%);">
@@ -165,13 +180,13 @@
 							<table id="calendar">
 								<thead>
 									<tr>
-										<th>Sun</th>
-										<th>Mon</th>
-										<th>Tue</th>
-										<th>Wed</th>
-										<th>Thu</th>
-										<th>Fri</th>
-										<th>Sat</th>
+										<th id="weekday-cell-0" class="weekday-cell">日</th>
+										<th id="weekday-cell-1" class="weekday-cell">一</th>
+										<th id="weekday-cell-2" class="weekday-cell">二</th>
+										<th id="weekday-cell-3" class="weekday-cell">三</th>
+										<th id="weekday-cell-4" class="weekday-cell">四</th>
+										<th id="weekday-cell-5" class="weekday-cell">五</th>
+										<th id="weekday-cell-6" class="weekday-cell">六</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -231,6 +246,9 @@
 									</tr>
 								</tbody>
 							</table>
+						
+							<!-- <p class="head-day" style="font-family: 'PingFang-Semibold', sans-serif; font-size: 2vh; color: whitesmoke; margin-top: 1vh; margin-bottom: -1vh;"></p> -->
+						
 						</div>
 					</div>
 				</div>
@@ -245,57 +263,10 @@
 	</section>
 
 	<script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
-
-<!--  <script>
-	var debugText = document.getElementById("debugText");
-	var RedShardDays = ""
-
-    document.addEventListener("DOMContentLoaded", function() {
-		
-        var cells = document.getElementsByTagName("td"); //pick out cell here
-
-        for (var i = 0; i < cells.length; i++) {
-            var cell = cells[i];
-			// console.log(cell.style);
-			
-            var date = cell.innerText.trim();
-			//console.log(date);
-			//if ( date === "" )
-			//	console.log( "empty cell" );
-			//else 
-			//	console.log( "date in this cell is:" + date);
-			
-
-			if (date === "") 
-				continue;
-
-			
-			var dateNum = Number(date);
-			var weekdayNum = (i%7)===0 ? 7 : (i%7);
-			//console.log( dateNum )
-			//console.log( typeof(dateNum) )
-
-			if ( weekdayNum===2 ) {
-				cell.style.backgroundColor = "#847272";
-				// const blackCircle = document.createElement("div");
-				// blackCircle.classList.add("black-circle");
-				// cell.appendChild(blackCircle);
-				//cell.style.border = "1px solid black";
-			} else if ( weekdayNum===6 || weekdayNum===7 ) {
-				cell.style.backgroundColor = "#ff1e14";
-			}
-			
-			console.log(cell.style.backgroundColor);
-            
-        }
-    });
-
-	//debugText.value = RedShardDays;
-	
-	</script> -->
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/main.js" type="module"></script>
 
 	</body>
 </html>

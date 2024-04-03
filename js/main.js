@@ -1,3 +1,5 @@
+// import { getShardInfo } from "./location_hint.js";
+
 (function($) {
 
 	"use strict";
@@ -8,6 +10,7 @@
         month = today.getMonth(),
         monthTag =["January","February","March","April","May","June","July","August","September","October","November","December"],
         day = today.getDate(),
+		dayOfWeek = today.getDay(),
         days = document.getElementsByTagName('td'),
         selectedDay,
         setDate,
@@ -41,11 +44,38 @@
     };
     
     Calendar.prototype.drawHeader = function(e) {
-        var headDay = document.getElementsByClassName('head-day'),
-            headMonth = document.getElementsByClassName('head-month');
-
-            e?headDay[0].innerHTML = e : headDay[0].innerHTML = day;
-            headMonth[0].innerHTML = monthTag[month] +" - " + year;        
+        var headMonth = document.getElementsByClassName('head-month'),
+			headDay = document.getElementsByClassName('head-day');
+            
+			//---------------------
+			headMonth[0].innerHTML = monthTag[month] + "<br>" + year;   
+			
+			//---------------------
+            // e ? (headDay[0].innerHTML = e) : (headDay[0].innerHTML = day);
+			var dateNum;
+			if ( e ) dateNum = e;
+			else dateNum = day;
+			
+			var ChineseWeekDay = ['日', '一', '二', '三', '四', '五', '六'];
+			var headDayString = "选中的日期是 [" + month + "月" + dateNum + "日 星期" + ChineseWeekDay[dayOfWeek] + "] ， ";
+			
+			// return [ infoObj.locationName, infoObj.candleAmount, candleType_mapping[candleType].chineseHint ];
+			// const customDate = new Date(2022, 3, 15, 10, 30, 0, 0); 年 月 日 时 分 秒 毫秒
+			// console.log(customDate); // 输出：Wed Apr 15 2022 10:30:00 GMT+0000 (Coordinated Universal Time)
+			var shardInfoList = getShardInfo( new Date(year,month,dateNum) );
+			if ( shardInfoList.length==0 ) 
+				headDayString += ("<br>"+ "这一天没有碎片事件。");
+			else
+				headDayString += ("<br>"+ "这一天的碎片降临在" + shardInfoList[0] + ", <br> 提供" + shardInfoList[1] + shardInfoList[2] ) + "。";
+			
+			headDay[0].innerHTML = headDayString;
+			
+			var wrapHeader = document.querySelector('.wrap-header');
+			wrapHeader.style.backgroundImage = 'url(images/LocationImages/' + shardInfoList[0] + '.jpg)';
+			wrapHeader.style.backgroundSize = 'cover';
+			wrapHeader.style.backgroundRepeat = 'no-repeat';
+			wrapHeader.style.backgroundPosition = 'center';
+            
      };
     
 	Calendar.prototype.drawDays = function() {
@@ -91,9 +121,13 @@
 		    var rgbaColor = `rgba(${r}, ${g}, ${b}, ${opacity})`;
 		    return rgbaColor;
 		  };
-		  
+		
 		
 		for ( var j=0; j<42; j++ ){
+			days[j].style.backgroundColor = convertHexToRgba('#ffffff', 0.1); //reset bg color
+		}
+		
+		for ( var j=0; j<42; j++ ){ //paint according to shard type
 			if ( days[j].innerHTML === "" )
 				continue;
 			

@@ -82,7 +82,7 @@ function updateProgress() {
 	var totalMinutes = 24 * 60; // 一天总分钟数
 
 	getCurrentTime();
-	debug_simulateUpdateTime("16:16", 5, 20);
+	// debug_simulateUpdateTime("16:16", 5, 20);
 	getTodayTimeSegment();
 	// console.log( DayOfWeek );
 
@@ -138,7 +138,6 @@ function updateProgress() {
 		}
 		
 			
-		
 		
 		
 		//如果是边界：大圆角
@@ -228,7 +227,7 @@ function updateLineAndTimer(progressBar, height, textContent, isDynamic, LorR='R
 		if (TimeLine) 
 			progressBar.removeChild(TimeLine);
 		else 
-			console.log( "null timeline", TimeLine, progressBar, height );
+			console.log( "timeline of this progress bar is null.", "Timeline:"+TimeLine, "ProgressBar:"+progressBar, "Height:"+height );
 	else
 		if ( TimeLine ) return;
 
@@ -271,6 +270,7 @@ function updateLineAndTimer(progressBar, height, textContent, isDynamic, LorR='R
 	smallTimer_TimeLine.style.width = '8vh';
 	smallTimer_TimeLine.style.position = 'absolute';
 	smallTimer_TimeLine.style.top = '-20%'; // 根据需要调整垂直位置
+	if ( isDynamic ) smallTimer_TimeLine.style.top = '-10%'; // 根据需要调整垂直位置
 	smallTimer_TimeLine.style.left = '-4vh'; // 根据需要调整水平位置
 	smallTimer_TimeLine.style.webkitTextFillColor = 'black';
 	smallTimer_TimeLine.style.zIndex = 9999;

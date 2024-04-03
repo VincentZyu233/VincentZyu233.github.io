@@ -2,5 +2,19 @@
   "devDependencies": {
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"
-  }
+  },
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "popper.js": "^1.16.1"
+  },
+  "name": "skyshardcalendar-basedon-calendar-07",
+  "description": "光遇 网易国服 碎片时间查询",
+  "version": "1.0.2",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
