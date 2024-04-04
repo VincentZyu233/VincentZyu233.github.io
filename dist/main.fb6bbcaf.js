@@ -184,7 +184,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
       // const customDate = new Date(2022, 3, 15, 10, 30, 0, 0); 年 月 日 时 分 秒 毫秒
       // console.log(customDate); // 输出：Wed Apr 15 2022 10:30:00 GMT+0000 (Coordinated Universal Time)
       var shardInfoList = getShardInfo(new Date(year, month, dateNum));
-      if (shardInfoList.length == 0) headDayString += "<br>" + "这一天没有碎片事件。";else headDayString += "<br>" + "这一天的碎片降临在" + shardInfoList[0] + ", <br> 提供" + shardInfoList[1] + shardInfoList[2] + "。";
+      if (shardInfoList.length == 0) headDayString += "<br>" + "这一天没有碎片事件。";else headDayString += "<br>" + "这一天的碎片降临在" + shardInfoList[0] + ", 提供" + shardInfoList[1] + shardInfoList[2] + "。";
       headDay[0].innerHTML = headDayString;
       var wrapHeader = document.querySelector('.wrap-header');
       wrapHeader.style.backgroundImage = 'url(images/LocationImages/' + shardInfoList[0] + '.jpg)';

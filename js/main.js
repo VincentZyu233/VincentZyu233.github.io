@@ -66,7 +66,7 @@
 			if ( shardInfoList.length==0 ) 
 				headDayString += ("<br>"+ "这一天没有碎片事件。");
 			else
-				headDayString += ("<br>"+ "这一天的碎片降临在" + shardInfoList[0] + ", <br> 提供" + shardInfoList[1] + shardInfoList[2] ) + "。";
+				headDayString += ("<br>"+ "这一天的碎片降临在" + shardInfoList[0] + ", 提供" + shardInfoList[1] + shardInfoList[2] ) + "。";
 			
 			headDay[0].innerHTML = headDayString;
 			
