@@ -71,7 +71,8 @@
 			headDay[0].innerHTML = headDayString;
 			
 			var wrapHeader = document.querySelector('.wrap-header');
-			wrapHeader.style.backgroundImage = 'url(images/LocationImages/' + shardInfoList[0] + '.jpg)';
+			// wrapHeader.style.backgroundImage = 'url(images/LocationImages/' + shardInfoList[0] + '.jpg)'; //修改成某个在线链接的图片
+			wrapHeader.style.backgroundImage = 'url(https://gitee.com/vincent-zyu/pics-sky-shard-calendar/blob/main/LocationImages/' + shardInfoList[0] + '.jpg)';
 			wrapHeader.style.backgroundSize = 'cover';
 			wrapHeader.style.backgroundRepeat = 'no-repeat';
 			wrapHeader.style.backgroundPosition = 'center';
