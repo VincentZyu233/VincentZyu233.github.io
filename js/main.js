@@ -65,20 +65,22 @@
 	  var dateNum;
 	  if (e) dateNum = e;
 	  else dateNum = day;
-
+		//选中的日期是x月x日星期x，这一天没有碎片事件/降临在xxxx。
 	  var ChineseWeekDay = ['日', '一', '二', '三', '四', '五', '六'];
 	  var headDayString = "选中的日期是 [" + month + "月" + dateNum + "日 星期" + ChineseWeekDay[dayOfWeek] + "] ， ";
-
 	  var shardInfoList = getShardInfo(new Date(year, month, dateNum));
 	  if (shardInfoList.length == 0)
 		headDayString += ("<br>" + "这一天没有碎片事件。");
 	  else
 		headDayString += ("<br>" + "这一天的碎片降临在" + shardInfoList[0] + ", 提供" + shardInfoList[1] + shardInfoList[2]) + "。";
-
 	  headDay[0].innerHTML = headDayString;
 
 	  var wrapHeader = document.querySelector('.wrap-header');
-
+	  // wrapHeader.style.backgroundImage = 'url(images/LocationImages/' + shardInfoList[0] + '.jpg)'; //修改成某个在线链接的图片
+		
+	  if ( shardInfoList.length==0 )
+		wrapHeader.style.backgroundImage = '';
+	  
 	  try {
 		var imageUrlMapping = {
 			"蝴蝶平原": 'https://img2.imgtp.com/2024/04/05/Rj9WrStz.jpg',
