@@ -43,41 +43,78 @@
         }
     };
     
-    Calendar.prototype.drawHeader = function(e) {
-        var headMonth = document.getElementsByClassName('head-month'),
-			headDay = document.getElementsByClassName('head-day');
-            
-			//---------------------
-			headMonth[0].innerHTML = monthTag[month] + "<br>" + year;   
-			
-			//---------------------
-            // e ? (headDay[0].innerHTML = e) : (headDay[0].innerHTML = day);
-			var dateNum;
-			if ( e ) dateNum = e;
-			else dateNum = day;
-			
-			var ChineseWeekDay = ['日', '一', '二', '三', '四', '五', '六'];
-			var headDayString = "选中的日期是 [" + month + "月" + dateNum + "日 星期" + ChineseWeekDay[dayOfWeek] + "] ， ";
-			
-			// return [ infoObj.locationName, infoObj.candleAmount, candleType_mapping[candleType].chineseHint ];
-			// const customDate = new Date(2022, 3, 15, 10, 30, 0, 0); 年 月 日 时 分 秒 毫秒
-			// console.log(customDate); // 输出：Wed Apr 15 2022 10:30:00 GMT+0000 (Coordinated Universal Time)
-			var shardInfoList = getShardInfo( new Date(year,month,dateNum) );
-			if ( shardInfoList.length==0 ) 
-				headDayString += ("<br>"+ "这一天没有碎片事件。");
-			else
-				headDayString += ("<br>"+ "这一天的碎片降临在" + shardInfoList[0] + ", 提供" + shardInfoList[1] + shardInfoList[2] ) + "。";
-			
-			headDay[0].innerHTML = headDayString;
-			
-			var wrapHeader = document.querySelector('.wrap-header');
-			// wrapHeader.style.backgroundImage = 'url(images/LocationImages/' + shardInfoList[0] + '.jpg)'; //修改成某个在线链接的图片
-			wrapHeader.style.backgroundImage = 'url(https://gitee.com/vincent-zyu/pics-sky-shard-calendar/blob/main/LocationImages/' + shardInfoList[0] + '.jpg)';
-			wrapHeader.style.backgroundSize = 'cover';
-			wrapHeader.style.backgroundRepeat = 'no-repeat';
-			wrapHeader.style.backgroundPosition = 'center';
-            
-     };
+	// 定义一个加载图像的函数
+	function loadImage(url) {
+	  return new Promise((resolve, reject) => {
+		const image = new Image();
+		image.onload = () => resolve(image);
+		image.onerror = () => reject(new Error('Failed to load image'));
+		image.src = url;
+	  });
+	}
+
+	Calendar.prototype.drawHeader = async function(e) {
+	  var headMonth = document.getElementsByClassName('head-month'),
+		headDay = document.getElementsByClassName('head-day');
+
+	  //---------------------
+	  headMonth[0].innerHTML = monthTag[month] + "<br>" + year;
+
+	  //---------------------
+	  // e ? (headDay[0].innerHTML = e) : (headDay[0].innerHTML = day);
+	  var dateNum;
+	  if (e) dateNum = e;
+	  else dateNum = day;
+
+	  var ChineseWeekDay = ['日', '一', '二', '三', '四', '五', '六'];
+	  var headDayString = "选中的日期是 [" + month + "月" + dateNum + "日 星期" + ChineseWeekDay[dayOfWeek] + "] ， ";
+
+	  var shardInfoList = getShardInfo(new Date(year, month, dateNum));
+	  if (shardInfoList.length == 0)
+		headDayString += ("<br>" + "这一天没有碎片事件。");
+	  else
+		headDayString += ("<br>" + "这一天的碎片降临在" + shardInfoList[0] + ", 提供" + shardInfoList[1] + shardInfoList[2]) + "。";
+
+	  headDay[0].innerHTML = headDayString;
+
+	  var wrapHeader = document.querySelector('.wrap-header');
+
+	  try {
+		var imageUrlMapping = {
+			"蝴蝶平原": 'https://img2.imgtp.com/2024/04/05/Rj9WrStz.jpg',
+			"幽光山洞": 'https://img2.imgtp.com/2024/04/05/97qA6Fn7.jpg',
+			"云中仙乡": 'https://img2.imgtp.com/2024/04/05/t84hG28l.jpg',
+			"云顶浮岛": 'https://img2.imgtp.com/2024/04/05/EElIbwuq.jpg',
+			"圣岛":     'https://img2.imgtp.com/2024/04/05/cvgSc2sE.jpg',
+			"荧光森林": 'https://img2.imgtp.com/2024/04/05/hT3MH9fC.jpg',
+			"秘密花园": 'https://img2.imgtp.com/2024/04/05/GvJOl8vR.jpg',
+			"密林遗迹": 'https://img2.imgtp.com/2024/04/05/xfALHtBk.jpg',
+			"大树屋":   'https://img2.imgtp.com/2024/04/05/PoXyXH7I.jpg',
+			"神殿后花园": 'https://img2.imgtp.com/2024/04/05/GvJOl8vR.jpg',
+			"溜冰场":  'https://img2.imgtp.com/2024/04/05/6xktt2mY.jpg',
+			"圆梦村":  'https://img2.imgtp.com/2024/04/05/59juzvic.jpg',
+			"雪隐峰":  'https://img2.imgtp.com/2024/04/05/Rq4OhUut.jpg',
+			"边陲荒漠": 'https://img2.imgtp.com/2024/04/05/bM9PH8Zk.jpg',
+			"巨兽荒原": 'https://img2.imgtp.com/2024/04/05/lPgje0Yc.jpg',
+			"黑水港湾": 'https://img2.imgtp.com/2024/04/05/Gd3KOjHd.jpg',
+			"远古战场": 'https://img2.imgtp.com/2024/04/05/pKE8Hrcx.jpg',
+			"星光沙漠": 'https://img2.imgtp.com/2024/04/05/dgr2i3Kc.jpg',
+			"水母港湾": 'https://img2.imgtp.com/2024/04/05/kVHcxvKC.jpg',
+			"遗忘方舟": 'https://img2.imgtp.com/2024/04/05/1hWai9xY.jpg',
+						
+		};
+
+		const imageUrl = imageUrlMapping[shardInfoList[0]];
+		const image = await loadImage(imageUrl); // 等待图像加载完成
+
+		wrapHeader.style.backgroundImage = `url(${image.src})`;
+		wrapHeader.style.backgroundSize = 'cover';
+		wrapHeader.style.backgroundRepeat = 'no-repeat';
+		wrapHeader.style.backgroundPosition = 'center';
+	  } catch (error) {
+		console.error(error);
+	  }
+	};
     
 	Calendar.prototype.drawDays = function() {
 		var startDay = new Date(year, month, 1).getDay(),

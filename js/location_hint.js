@@ -15,7 +15,7 @@ window.onload = function() {
 window.getShardInfo = getShardInfo;
 // export function getShardInfo(){
 function getShardInfo( now ){	
-	console.log( "getShardInfo(): ", now );
+	console.log( "getShardInfo(): 选中的日期：", now );
 	// console.log( now.getMonth() );
 	
 	var rule1_mapping = {

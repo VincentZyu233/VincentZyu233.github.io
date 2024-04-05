@@ -1,0 +1,23 @@
+var imageUrlMapping = {
+	"蝴蝶平原": 'https://img2.imgtp.com/2024/04/05/Rj9WrStz.jpg',
+	"幽光山洞": 'https://img2.imgtp.com/2024/04/05/97qA6Fn7.jpg',
+	"云中仙乡": 'https://img2.imgtp.com/2024/04/05/t84hG28l.jpg',
+	"云顶浮岛": 'https://img2.imgtp.com/2024/04/05/EElIbwuq.jpg',
+	"圣岛":     'https://img2.imgtp.com/2024/04/05/cvgSc2sE.jpg',
+	"荧光森林": 'https://img2.imgtp.com/2024/04/05/hT3MH9fC.jpg',
+	"秘密花园": 'https://img2.imgtp.com/2024/04/05/GvJOl8vR.jpg',
+	"密林遗迹": 'https://img2.imgtp.com/2024/04/05/xfALHtBk.jpg',
+	"大树屋":   'https://img2.imgtp.com/2024/04/05/PoXyXH7I.jpg',
+	"神殿后花园": 'https://img2.imgtp.com/2024/04/05/GvJOl8vR.jpg',
+	"溜冰场":  'https://img2.imgtp.com/2024/04/05/6xktt2mY.jpg',
+	"圆梦村":  'https://img2.imgtp.com/2024/04/05/59juzvic.jpg',
+	"雪隐峰":  'https://img2.imgtp.com/2024/04/05/Rq4OhUut.jpg',
+	"边陲荒漠": 'https://img2.imgtp.com/2024/04/05/bM9PH8Zk.jpg',
+	"巨兽荒原": 'https://img2.imgtp.com/2024/04/05/lPgje0Yc.jpg',
+	"黑水港湾": 'https://img2.imgtp.com/2024/04/05/Gd3KOjHd.jpg',
+	"远古战场": 'https://img2.imgtp.com/2024/04/05/pKE8Hrcx.jpg',
+	"星光沙漠": 'https://img2.imgtp.com/2024/04/05/dgr2i3Kc.jpg',
+	"水母港湾": 'https://img2.imgtp.com/2024/04/05/kVHcxvKC.jpg',
+	"遗忘方舟": 'https://img2.imgtp.com/2024/04/05/1hWai9xY.jpg',
+				
+};
