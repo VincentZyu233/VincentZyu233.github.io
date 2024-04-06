@@ -110,7 +110,7 @@ function getShardInfo( now ){
 	// console.log((date-1)%5);
 	// console.log(shardInfo_List[dayOfWeek]);
 	// console.log(shardInfo_List[6]);
-	infoObj = shardInfo_List[dayOfWeek][(date-1)%5];
+	infoObj = shardInfo_List[dayOfWeek][(date+2)%5];
 	candleType = (DayOfWeek===2 || DayOfWeek===3) ? "wc" : "ac";
 	
 	// console.log( candleType_mapping );

@@ -54,6 +54,7 @@
 	}
 
 	Calendar.prototype.drawHeader = async function(e) {
+		console.log( "Calendar.prototype.drawHeader(): e:" + e );
 	  var headMonth = document.getElementsByClassName('head-month'),
 		headDay = document.getElementsByClassName('head-day');
 
@@ -65,10 +66,14 @@
 	  var dateNum;
 	  if (e) dateNum = e;
 	  else dateNum = day;
-		//选中的日期是x月x日星期x，这一天没有碎片事件/降临在xxxx。
+	  
+		//选中的日期是x月x日星期x，
 	  var ChineseWeekDay = ['日', '一', '二', '三', '四', '五', '六'];
-	  var headDayString = "选中的日期是 [" + month + "月" + dateNum + "日 星期" + ChineseWeekDay[dayOfWeek] + "] ， ";
-	  var shardInfoList = getShardInfo(new Date(year, month, dateNum));
+	  var selectedDay = new Date(year, month, dateNum);
+	  var headDayString = "选中的日期是 [" + month + "月" + dateNum + "日 星期" + ChineseWeekDay[selectedDay.getDay()] + "] ， ";
+	  
+	  //这一天没有碎片事件/降临在xxxx。
+	  var shardInfoList = getShardInfo( selectedDay );
 	  if (shardInfoList.length == 0)
 		headDayString += ("<br>" + "这一天没有碎片事件。");
 	  else
@@ -78,8 +83,11 @@
 	  var wrapHeader = document.querySelector('.wrap-header');
 	  // wrapHeader.style.backgroundImage = 'url(images/LocationImages/' + shardInfoList[0] + '.jpg)'; //修改成某个在线链接的图片
 		
-	  if ( shardInfoList.length==0 )
+	  if ( shardInfoList.length==0 ){
 		wrapHeader.style.backgroundImage = '';
+		return;
+	  }
+		
 	  
 	  try {
 		var imageUrlMapping = {
