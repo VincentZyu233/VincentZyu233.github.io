@@ -75,9 +75,8 @@
 	  
 		//选中的日期是x月x日星期x，
 	  var ChineseWeekDay = ['日', '一', '二', '三', '四', '五', '六'];
-	  var selectedDay = new Date(year, (month+1===12) ? 12 : month+1, e);
-	  var headDayString;
-	   headDayString = "日历选中日期： [" + selectedDay.getMonth() + "月" + selectedDay.getDate() + "日 星期" + ChineseWeekDay[selectedDay.getDay()] + "] ， ";
+	  var selectedDay = new Date(year, month, e);
+	  var headDayString = "日历选中日期： [" + (selectedDay.getMonth()+1) + "月" + selectedDay.getDate() + "日 星期" + ChineseWeekDay[selectedDay.getDay()] + "] ， ";
 	   
 	   
 	  //这一天没有碎片事件/降临在xxxx。
@@ -87,13 +86,7 @@
 	  else
 		headDayString += ("<br>" + "这天的碎片降临在" + shardInfoList[0] + ", <br> 提供" + shardInfoList[1] + shardInfoList[2]) + "。";
 	  
-	  // headDay[0].innerHTML = headDayString;
-	  
-	  headDay[0].style.opacity = 0;
-	  setTimeout(function() {// 等待一小段时间，让过渡效果生效
-	    headDay[0].innerHTML = headDayString;// 更新文本内容
-	    headDay[0].style.opacity = 1;// 将透明度设置为 1，触发过渡效果
-	  }, 100); // 这里的 100 表示等待 100 毫秒，可以根据需要调整等待时间
+		headDay[0].innerHTML = headDayString;// 更新文本内容
 
 	  
 	  // wrapHeader.style.backgroundImage = 'url(images/LocationImages/' + shardInfoList[0] + '.jpg)'; //修改成某个在线链接的图片
