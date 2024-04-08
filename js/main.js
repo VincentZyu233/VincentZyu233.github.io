@@ -141,7 +141,7 @@
 			n = startDay; //最后一天的格子数，从1开始数
 
 		for (var k = 0; k < 42; k++) {
-			days[k].innerHTML = '';
+			days[k].innerHTML = ' ';
 			days[k].id = '';
 			days[k].className = '';
 		}
