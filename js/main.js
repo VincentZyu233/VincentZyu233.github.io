@@ -54,37 +54,53 @@
 	}
 
 	Calendar.prototype.drawHeader = async function(e) {
-		console.log( "Calendar.prototype.drawHeader(): e:" + e );
-	  var headMonth = document.getElementsByClassName('head-month'),
-		headDay = document.getElementsByClassName('head-day');
+		// console.log( "Calendar.prototype.drawHeader(): e:" + e );
+		var headMonth = document.getElementsByClassName('head-month'),
+			headDay = document.getElementsByClassName('head-day'),
+			wrapHeader = document.querySelector('.wrap-header');
+			
+		wrapHeader.style.backgroundSize = "cover";
+		wrapHeader.style.backgroundPosition = "center";
 
 	  //---------------------
 	  headMonth[0].innerHTML = monthTag[month] + "<br>" + year;
 
 	  //---------------------
 	  // e ? (headDay[0].innerHTML = e) : (headDay[0].innerHTML = day);
-	  var dateNum;
-	  if (e) dateNum = e;
-	  else dateNum = day;
+		if ( !e ){
+			headDay[0].innerHTML = "  未选中日期  ";// 更新文本内容
+			wrapHeader.style.backgroundImage = 'url(images/aviary.jpg)';
+			return;
+		}
 	  
 		//选中的日期是x月x日星期x，
 	  var ChineseWeekDay = ['日', '一', '二', '三', '四', '五', '六'];
-	  var selectedDay = new Date(year, month, dateNum);
-	  var headDayString = "选中的日期是 [" + month + "月" + dateNum + "日 星期" + ChineseWeekDay[selectedDay.getDay()] + "] ， ";
-	  
+	  var selectedDay = new Date(year, (month+1===12) ? 12 : month+1, e);
+	  var headDayString;
+	   headDayString = "日历选中日期： [" + selectedDay.getMonth() + "月" + selectedDay.getDate() + "日 星期" + ChineseWeekDay[selectedDay.getDay()] + "] ， ";
+	   
+	   
 	  //这一天没有碎片事件/降临在xxxx。
 	  var shardInfoList = getShardInfo( selectedDay );
 	  if (shardInfoList.length == 0)
-		headDayString += ("<br>" + "这一天没有碎片事件。");
+		headDayString += ("<br>" + "这天没有碎片事件。");
 	  else
-		headDayString += ("<br>" + "这一天的碎片降临在" + shardInfoList[0] + ", 提供" + shardInfoList[1] + shardInfoList[2]) + "。";
-	  headDay[0].innerHTML = headDayString;
+		headDayString += ("<br>" + "这天的碎片降临在" + shardInfoList[0] + ", <br> 提供" + shardInfoList[1] + shardInfoList[2]) + "。";
+	  
+	  // headDay[0].innerHTML = headDayString;
+	  
+	  headDay[0].style.opacity = 0;
+	  setTimeout(function() {// 等待一小段时间，让过渡效果生效
+	    headDay[0].innerHTML = headDayString;// 更新文本内容
+	    headDay[0].style.opacity = 1;// 将透明度设置为 1，触发过渡效果
+	  }, 100); // 这里的 100 表示等待 100 毫秒，可以根据需要调整等待时间
 
-	  var wrapHeader = document.querySelector('.wrap-header');
+	  
 	  // wrapHeader.style.backgroundImage = 'url(images/LocationImages/' + shardInfoList[0] + '.jpg)'; //修改成某个在线链接的图片
 		
 	  if ( shardInfoList.length==0 ){
-		wrapHeader.style.backgroundImage = '';
+		wrapHeader.style.backgroundImage = 'url(images/WindPath.jpg)';
+		// wrapHeader.style.backgroundImage = '';
 		return;
 	  }
 		
@@ -101,7 +117,7 @@
 			"密林遗迹": 'https://img2.imgtp.com/2024/04/05/xfALHtBk.jpg',
 			"大树屋":   'https://img2.imgtp.com/2024/04/05/PoXyXH7I.jpg',
 			"神殿后花园": 'https://img2.imgtp.com/2024/04/05/GvJOl8vR.jpg',
-			"溜冰场":  'https://img2.imgtp.com/2024/04/05/6xktt2mY.jpg',
+			"滑冰场":  'https://img2.imgtp.com/2024/04/05/6xktt2mY.jpg',
 			"圆梦村":  'https://img2.imgtp.com/2024/04/05/59juzvic.jpg',
 			"雪隐峰":  'https://img2.imgtp.com/2024/04/05/Rq4OhUut.jpg',
 			"边陲荒漠": 'https://img2.imgtp.com/2024/04/05/bM9PH8Zk.jpg',

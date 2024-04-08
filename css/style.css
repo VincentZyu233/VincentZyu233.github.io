@@ -8187,23 +8187,22 @@ h1, h2, h3, h4, h5,
   position: relative;
   margin: 0 auto;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 5vh 5vh 5vh 5vh;
   -webkit-box-shadow: 0px 19px 27px -20px rgba(0, 0, 0, 0.16);
   -moz-box-shadow: 0px 19px 27px -20px rgba(0, 0, 0, 0.16);
   box-shadow: 0px 19px 27px -20px rgba(0, 0, 0, 0.16); }
 
 .wrap-header {
-  position: absolute;
-  top: 0;
+  /* position: absolute; */
+  bottom: 0;
   left: 0;
   right: 0;
   /* bottom: (100-61.8)%;*/
-  bottom: 60%;
   /* width: 35%;*/
   /* margin-bottom: 10vh; */
   z-index: 0; }
   .wrap-header:after {
-    position: absolute;
+    /* position: absolute; */
     top: 5%;
     left: 5%;
     right: 5%;
@@ -8260,18 +8259,25 @@ h1, h2, h3, h4, h5,
     left: 20px; }
   .button-wrap .next-button {
     right: 20px; }
+	.button-wrap .head-month{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 
 .head-day {
   font-size: 2em;
   /* font-size: 0; */
   /* line-height: 1; */
   /* line-height: 0; */
-  color: #fff; }
+  color: #fff; 
+}
 
 .head-month {
 	/* position: absolute; */
 	/* top:50%; */
-  font-size: 5em;
+  font-size: 2.5em;
   font-family: 'San Francisco', sans-serif;
   /* font-size: 0; */
   /* line-height: 1; */

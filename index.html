@@ -66,6 +66,15 @@
 			/* font-weight: 10%; */
 		}
 		
+		@keyframes fade-in {
+		  from {
+		    opacity: 0;
+		  }
+		  to {
+		    opacity: 1;
+		  }
+		}
+		
 		.calendar-cell {
 			margin: 10px !important;
 		}
@@ -132,122 +141,105 @@
 		<script src="./js/location_hint.js"></script>
 		<script src="./js/progressBar.js"></script>
 		
-		
-		<!-- <div class="calendar-wrap" style="backdrop-filter: blur(20px);" style="opacity: 50%;" ></div> -->
-		
-		<div class="calendar-container" style="margin-top: 0;  position: relative;">
-			<!-- <div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Calendar #07</h2>
-				</div>
-			</div> -->
-			<div class="row" style="margin-bottom: 5vh;">
-				<div class="col-md-12">
-					<div class="elegant-calencar" style="width: 100%;">
-						
-						<div class="calendar-wrap" style="width: 100%; border-radius: 5%;">							
-							
-							<div class="wrap-header" style="background-image: url(images/bg.jpg); width: 100%; border-radius: 2vw; margin-bottom: 5%;">
-								<div class="head-month" style="line-height: 1; top: 15%; left: 10%; position: absolute;"></div>
-								<!-- <p class="head-day" style="font-family: 'PingFang-Semibold', sans-serif; font-size: 2vh; color: whitesmoke; position: absolute; top:20%; right: 10%; text-align: left;"></p> -->
-							</div>
-								
-							<div class="w-100 button-wrap" style="margin: 1vh; margin-top: 36%; margin-bottom: 5vh;">
-								<div class="pre-button d-flex align-items-center justify-content-center">
-									<!-- <span> <- </span><i class="fa fa-chevron-left"></i> -->
-									<img src="images/arrow-left.png" style="max-width: 200%; max-height: 200%; display: block; filter: invert(100%); bottom: 0;">
-								</div>
-								<p class="head-day" style="font-family: 'PingFang-Semibold', sans-serif; font-size: 2vh; color: whitesmoke; position: absolute; top:-2vh; left: 10%; text-align: left;"></p>
-								
-								<div class="next-button d-flex align-items-center justify-content-center">
-									<!-- <span> -> </span><i class="fa fa-chevron-right"></i> -->
-									<img src="images/arrow-right.png" style="max-width: 200%; max-height: 200%; display: block; margin: auto; filter: invert(100%);">
-								</div>
-							</div>
-							<p id="reset">Today</p>
-							<table id="calendar">
-								<thead>
-									<tr>
-										<th id="weekday-cell-0" class="weekday-cell">日</th>
-										<th id="weekday-cell-1" class="weekday-cell">一</th>
-										<th id="weekday-cell-2" class="weekday-cell">二</th>
-										<th id="weekday-cell-3" class="weekday-cell">三</th>
-										<th id="weekday-cell-4" class="weekday-cell">四</th>
-										<th id="weekday-cell-5" class="weekday-cell">五</th>
-										<th id="weekday-cell-6" class="weekday-cell">六</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td id="cell-0-0" class="calendar-cell"></td>
-										<td id="cell-0-1" class="calendar-cell"></td>
-										<td id="cell-0-2" class="calendar-cell"></td>
-										<td id="cell-0-3" class="calendar-cell"></td>
-										<td id="cell-0-4" class="calendar-cell"></td>
-										<td id="cell-0-5" class="calendar-cell"></td>
-										<td id="cell-0-6" class="calendar-cell"></td>
-									</tr>
-									<tr>
-										<td id="cell-1-0" class="calendar-cell"></td>
-										<td id="cell-1-1" class="calendar-cell"></td>
-										<td id="cell-1-2" class="calendar-cell"></td>
-										<td id="cell-1-3" class="calendar-cell"></td>
-										<td id="cell-1-4" class="calendar-cell"></td>
-										<td id="cell-1-5" class="calendar-cell"></td>
-										<td id="cell-1-6" class="calendar-cell"></td>
-									</tr>
-									<tr>
-										<td id="cell-2-0" class="calendar-cell"></td>
-										<td id="cell-2-1" class="calendar-cell"></td>
-										<td id="cell-2-2" class="calendar-cell"></td>
-										<td id="cell-2-3" class="calendar-cell"></td>
-										<td id="cell-2-4" class="calendar-cell"></td>
-										<td id="cell-2-5" class="calendar-cell"></td>
-										<td id="cell-2-6" class="calendar-cell"></td>
-									</tr>
-									<tr>
-										<td id="cell-3-0" class="calendar-cell"></td>
-										<td id="cell-3-1" class="calendar-cell"></td>
-										<td id="cell-3-2" class="calendar-cell"></td>
-										<td id="cell-3-3" class="calendar-cell"></td>
-										<td id="cell-3-4" class="calendar-cell"></td>
-										<td id="cell-3-5" class="calendar-cell"></td>
-										<td id="cell-3-6" class="calendar-cell"></td>
-									</tr>
-									<tr>
-										<td id="cell-4-0" class="calendar-cell"></td>
-										<td id="cell-4-1" class="calendar-cell"></td>
-										<td id="cell-4-2" class="calendar-cell"></td>
-										<td id="cell-4-3" class="calendar-cell"></td>
-										<td id="cell-4-4" class="calendar-cell"></td>
-										<td id="cell-4-5" class="calendar-cell"></td>
-										<td id="cell-4-6" class="calendar-cell"></td>
-									</tr>
-									<tr>
-										<td id="cell-5-0" class="calendar-cell"></td>
-										<td id="cell-5-1" class="calendar-cell"></td>
-										<td id="cell-5-2" class="calendar-cell"></td>
-										<td id="cell-5-3" class="calendar-cell"></td>
-										<td id="cell-5-4" class="calendar-cell"></td>
-										<td id="cell-5-5" class="calendar-cell"></td>
-										<td id="cell-5-6" class="calendar-cell"></td>
-									</tr>
-								</tbody>
-							</table>
-						
-							<!-- <img src="https://gitee.com/vincent-zyu/pics-sky-shard-calendar/raw/main/LocationImages/%E4%BA%91%E4%B8%AD%E4%BB%99%E4%B9%A1.jpg" alt="云中仙乡" > -->
-							<!-- <img src="https://img2.imgtp.com/2024/04/05/Rj9WrStz.jpg" alt="蝴蝶平原.jpg" title="蝴蝶平原.jpg" /> -->
-							
-						</div>
+		<div class="elegant-calencar" style="width: 100%; margin-bottom: 5vh;">
+			
+			<div class="calendar-wrap" style="width: 100%; border-radius: 5%; display: flex; flex-direction: column;">							
+				
+				<div class="w-100 button-wrap" style="margin: 1vh; margin-top: 5%; margin-bottom: 5vh; display: flex; flex-direction: row;">
+					<div class="pre-button d-flex align-items-center justify-content-center">
+						<!-- <span> <- </span><i class="fa fa-chevron-left"></i> -->
+						<img src="images/arrow-left.png" style="max-width: 200%; max-height: 200%; display: block; filter: invert(100%); bottom: 0;">
+					</div>
+					<div class="head-month d-flex align-items-center justify-content-center" style="line-height: 1;"></div>
+					<div class="next-button d-flex align-items-center justify-content-center">
+						<!-- <span> -> </span><i class="fa fa-chevron-right"></i> -->
+						<img src="images/arrow-right.png" style="max-width: 200%; max-height: 200%; display: block; margin: auto; filter: invert(100%);">
 					</div>
 				</div>
+				<p id="reset">Today</p>
+				
+				<table id="calendar">
+					<thead>
+						<tr>
+							<th id="weekday-cell-0" class="weekday-cell">日</th>
+							<th id="weekday-cell-1" class="weekday-cell">一</th>
+							<th id="weekday-cell-2" class="weekday-cell">二</th>
+							<th id="weekday-cell-3" class="weekday-cell">三</th>
+							<th id="weekday-cell-4" class="weekday-cell">四</th>
+							<th id="weekday-cell-5" class="weekday-cell">五</th>
+							<th id="weekday-cell-6" class="weekday-cell">六</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td id="cell-0-0" class="calendar-cell"></td>
+							<td id="cell-0-1" class="calendar-cell"></td>
+							<td id="cell-0-2" class="calendar-cell"></td>
+							<td id="cell-0-3" class="calendar-cell"></td>
+							<td id="cell-0-4" class="calendar-cell"></td>
+							<td id="cell-0-5" class="calendar-cell"></td>
+							<td id="cell-0-6" class="calendar-cell"></td>
+						</tr>
+						<tr>
+							<td id="cell-1-0" class="calendar-cell"></td>
+							<td id="cell-1-1" class="calendar-cell"></td>
+							<td id="cell-1-2" class="calendar-cell"></td>
+							<td id="cell-1-3" class="calendar-cell"></td>
+							<td id="cell-1-4" class="calendar-cell"></td>
+							<td id="cell-1-5" class="calendar-cell"></td>
+							<td id="cell-1-6" class="calendar-cell"></td>
+						</tr>
+						<tr>
+							<td id="cell-2-0" class="calendar-cell"></td>
+							<td id="cell-2-1" class="calendar-cell"></td>
+							<td id="cell-2-2" class="calendar-cell"></td>
+							<td id="cell-2-3" class="calendar-cell"></td>
+							<td id="cell-2-4" class="calendar-cell"></td>
+							<td id="cell-2-5" class="calendar-cell"></td>
+							<td id="cell-2-6" class="calendar-cell"></td>
+						</tr>
+						<tr>
+							<td id="cell-3-0" class="calendar-cell"></td>
+							<td id="cell-3-1" class="calendar-cell"></td>
+							<td id="cell-3-2" class="calendar-cell"></td>
+							<td id="cell-3-3" class="calendar-cell"></td>
+							<td id="cell-3-4" class="calendar-cell"></td>
+							<td id="cell-3-5" class="calendar-cell"></td>
+							<td id="cell-3-6" class="calendar-cell"></td>
+						</tr>
+						<tr>
+							<td id="cell-4-0" class="calendar-cell"></td>
+							<td id="cell-4-1" class="calendar-cell"></td>
+							<td id="cell-4-2" class="calendar-cell"></td>
+							<td id="cell-4-3" class="calendar-cell"></td>
+							<td id="cell-4-4" class="calendar-cell"></td>
+							<td id="cell-4-5" class="calendar-cell"></td>
+							<td id="cell-4-6" class="calendar-cell"></td>
+						</tr>
+						<tr>
+							<td id="cell-5-0" class="calendar-cell"></td>
+							<td id="cell-5-1" class="calendar-cell"></td>
+							<td id="cell-5-2" class="calendar-cell"></td>
+							<td id="cell-5-3" class="calendar-cell"></td>
+							<td id="cell-5-4" class="calendar-cell"></td>
+							<td id="cell-5-5" class="calendar-cell"></td>
+							<td id="cell-5-6" class="calendar-cell"></td>
+						</tr>
+					</tbody>
+				</table>
+			
+				<!-- <img src="https://gitee.com/vincent-zyu/pics-sky-shard-calendar/raw/main/LocationImages/%E4%BA%91%E4%B8%AD%E4%BB%99%E4%B9%A1.jpg" alt="云中仙乡" > -->
+				<!-- <img src="https://img2.imgtp.com/2024/04/05/Rj9WrStz.jpg" alt="蝴蝶平原.jpg" title="蝴蝶平原.jpg" /> -->
+					
+				
+				<div class="wrap-header" style="background-image: url(images/bg.jpg); width: 100%; height: 36vh; border-radius: 2vw; margin-bottom: 5%; margin-top: 5%; position: relative;">
+					<p class="head-day" style="font-family: 'PingFang-Semibold', sans-serif; font-size: 2vh; color: whitesmoke; background-color: rgba(111,111,111,0.333); border-radius: 2vw; position: absolute; top:10%; left: 5%; text-align: left;"></p>
+					<!-- <p class="head-day" style="font-family: 'PingFang-Semibold', sans-serif; font-size: 2vh; color: whitesmoke; position: absolute; top:20%; right: 10%; text-align: left;"></p> -->
+				</div>
+				
 			</div>
 		</div>
 
-
-		<!-- <input type="text" id="debugText" align="center" /> -->
-		
-				
 	</section>
 
 	<script src="js/jquery.min.js"></script>
