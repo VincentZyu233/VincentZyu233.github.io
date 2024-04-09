@@ -111,7 +111,7 @@ function getShardInfo( now ){
 	// console.log(shardInfo_List[dayOfWeek]);
 	// console.log(shardInfo_List[6]);
 	infoObj = shardInfo_List[dayOfWeek][(date+2)%5];
-	candleType = (DayOfWeek===2 || DayOfWeek===3) ? "wc" : "ac";
+	candleType = (dayOfWeek===2 || dayOfWeek===3) ? "wc" : "ac";
 	
 	// console.log( candleType_mapping );
 	// console.log( candleType );
@@ -120,17 +120,6 @@ function getShardInfo( now ){
 								+ "，提供 " + infoObj.candleAmount + candleType_mapping[candleType].chineseHint + "。";
 	// locationHint.textContent = ShardInfoString;	
 	// return ShardInfoString;
-	
-	
-	// var body = document.querySelector('body');
-	// var bgImageSrc = 'url(images/LocationImages/' + infoObj.locationName + '.jpg)';
-	
-	// // 设置背景样式
-	// body.style.backgroundImage = bgImageSrc;
-	// body.style.backgroundRepeat = 'repeat';
-	// body.style.backgroundPosition = 'center';
-	// body.style.backgroundSize = 'cover';
-	
 	
 	return [ infoObj.locationName, infoObj.candleAmount, candleType_mapping[candleType].chineseHint ];
 }
@@ -153,7 +142,7 @@ function updateLocationHintElement(){
 	candleTypeImage.src = "./images/" + candleType + ".png";
 	
 	candleAmountString = "    x" + infoObj.candleAmount;
-	if ( candleType=="wc" ) candleAmountString += "滴白蜡烛烛火";
+	if ( candleType=="wc" ) candleAmountString += "滴烛火";
 	if ( candleType=="ac" ) candleAmountString += "根升华蜡烛";
 	candleAmountElement.textContent = candleAmountString;
 }

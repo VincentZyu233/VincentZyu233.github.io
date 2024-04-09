@@ -185,7 +185,7 @@
 		}
 		
 		for ( var j=0; j<42; j++ ){ //paint according to shard type
-			if ( days[j].innerHTML === "" )
+			if ( days[j].innerHTML === ' ' )
 				continue;
 			
 			var dateNum = j-startDay+1;
